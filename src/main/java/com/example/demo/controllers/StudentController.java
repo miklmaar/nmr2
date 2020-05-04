@@ -16,7 +16,7 @@ public class StudentController {
     private IStudentRepository studentRepository;
 
     public StudentController() {
-        studentRepository = new InMemoryStudentRepositoryImpl();
+        studentRepository = new StudentRepositoryImpl();
     }
 
     @GetMapping("/")
