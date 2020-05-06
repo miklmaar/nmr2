@@ -23,18 +23,17 @@ public class StudentRepositoryImpl implements IStudentRepository {
     }
 
     @Override
-    public Student read(int id) {
+    public Student read(String cprno) {
         Student studentToReturn = new Student();
         try {
-            PreparedStatement getSingleStudent = conn.prepareStatement("SELECT * FROM students WHERE students_id=?");
+            PreparedStatement getSingleStudent = conn.prepareStatement("SELECT * FROM students WHERE cpr='" + cprno + "'");
             ResultSet rs = getSingleStudent.executeQuery();
             while(rs.next()){
                 studentToReturn = new Student();
-                studentToReturn.setId(rs.getInt(1));
-                studentToReturn.setFirstName(rs.getString(2));
-                studentToReturn.setLastName(rs.getString(3));
-                studentToReturn.setEnrollmentDate(rs.getDate(4));
-                studentToReturn.setCpr(rs.getString(5));
+                studentToReturn.setFirstName(rs.getString(1));
+                studentToReturn.setLastName(rs.getString(2));
+                studentToReturn.setEnrollmentDate(rs.getDate(3));
+                studentToReturn.setCpr(rs.getString(4));
             }
         }
         catch(SQLException s){
@@ -47,15 +46,14 @@ public class StudentRepositoryImpl implements IStudentRepository {
     public List<Student> readAll() {
         List<Student> allStudents = new ArrayList<Student>();
         try {
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM students");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM Students");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Student tempStudent = new Student();
-                tempStudent.setId(rs.getInt(1));
-                tempStudent.setFirstName(rs.getString(2));
-                tempStudent.setLastName(rs.getString(3));
-                tempStudent.setEnrollmentDate(rs.getDate(4));
-                tempStudent.setCpr(rs.getString(5));
+                tempStudent.setFirstName(rs.getString(1));
+                tempStudent.setLastName(rs.getString(2));
+                tempStudent.setEnrollmentDate(rs.getDate(3));
+                tempStudent.setCpr(rs.getString(4));
                 allStudents.add(tempStudent);
             }
         } catch (SQLException e) {
@@ -70,7 +68,14 @@ public class StudentRepositoryImpl implements IStudentRepository {
     }
 
     @Override
-    public boolean delete(int id) {
+    public boolean delete(String cprno) {
+        try {
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM Students WHERE cpr='" + cprno + "'");
+            ps.executeQuery();
+            return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 }

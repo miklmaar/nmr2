@@ -23,7 +23,7 @@
                 <td th:text="${student.firstName}"></td>
                 <td th:text="${student.lastName}"></td>
                 <td th:text="${student.enrollmentDate}"></td>
-                <td><a th:href="@{/student(id=${student.id})}"><button>Details</button></a></td>
+                <td><a th:href="@{/student(cpr=${student.cpr})}"><button>Details</button></a></td>
             </tr>
 
             <!--

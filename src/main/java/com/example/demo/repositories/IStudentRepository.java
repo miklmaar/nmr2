@@ -8,13 +8,13 @@ public interface IStudentRepository {
     // CRUD operations
     public boolean create(Student student);
 
-    public Student read(int id);
+    public Student read(String cprno);
 
     public List<Student> readAll();
 
     public boolean update(Student student);
 
-    public boolean delete(int id);
+    public boolean delete(String cprno);
 }
 
 
