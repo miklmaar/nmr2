@@ -5,9 +5,7 @@ import com.example.demo.repositories.IStudentRepository;
 import com.example.demo.repositories.StudentRepositoryImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentController {
@@ -20,7 +18,7 @@ public class StudentController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("students" , studentRepository.readAll());
+        indexRead(model);
         return "index";
     }
 
@@ -29,5 +27,39 @@ public class StudentController {
     public String getStudentByParameter(@RequestParam String cpr) {
         Student stu = studentRepository.read(cpr);
         return "The name is: " + stu.getFirstName() + " and the cpr is " + stu.getCpr();
+    }
+
+    @GetMapping("/deleteStudent")
+    public String deleteStudents(@RequestParam String cpr, Model model) {
+        boolean stu = studentRepository.delete(cpr);
+        indexRead(model);
+        if (stu) {
+            return "index";
+        }
+        else {
+            return "index";
+        }
+    }
+
+    @GetMapping("/addStudent")
+    public String addStudents() {
+        return "create";
+    }
+
+    @GetMapping("/addStudentForm")
+    public String addStudentForm(Model model) {
+        model.addAttribute("student",new Student());
+        return "index";
+    }
+    @PostMapping("/addStudentForm")
+    public String addStudentSubmit(@ModelAttribute Student student) {
+        return "index";
+    }
+
+
+
+
+    public void indexRead(Model model) {
+        model.addAttribute("students", studentRepository.readAll());
     }
 }

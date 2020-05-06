@@ -24,6 +24,7 @@
                 <td th:text="${student.lastName}"></td>
                 <td th:text="${student.enrollmentDate}"></td>
                 <td><a th:href="@{/student(cpr=${student.cpr})}"><button>Details</button></a></td>
+                <td><a th:href="@{/deleteStudent(cpr=${student.cpr})}"><button>Delete</button></a>
             </tr>
 
             <!--
@@ -49,5 +50,6 @@
             -->
         </table>
     </div>
+<a th:href="@{/addStudent}"><button>Add student </button></a>
 </body>
 </html>

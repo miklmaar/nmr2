@@ -70,8 +70,8 @@ public class StudentRepositoryImpl implements IStudentRepository {
     @Override
     public boolean delete(String cprno) {
         try {
-            PreparedStatement ps = conn.prepareStatement("DELETE FROM Students WHERE cpr='" + cprno + "'");
-            ps.executeQuery();
+            PreparedStatement ps = conn.prepareStatement("DELETE FROM Students WHERE cpr='" + cprno + "';");
+            ps.executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
