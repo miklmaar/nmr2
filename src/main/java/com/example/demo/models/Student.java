@@ -11,7 +11,7 @@ public class Student{
     public Date enrollmentDate;
     public String cpr;
 
-    public Student(int id, String firstName, String lastName, Date enrollmentDate, String cpr) {
+    public Student(String firstName, String lastName, Date enrollmentDate, String cpr) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.enrollmentDate = enrollmentDate;

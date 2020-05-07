@@ -42,15 +42,21 @@ public class StudentController {
     }
 
     @GetMapping("/addStudent")
-    public String addStudents() {
+    public String addStudent(Model model) {
+        Student stud = new Student();
+        model.addAttribute("student",stud);
         return "create";
     }
 
+    /*
     @GetMapping("/addStudentForm")
     public String addStudentForm(Model model) {
-        model.addAttribute("student",new Student());
-        return "index";
+        Student stud = new Student();
+        model.addAttribute("student", stud);
+        return "create";
     }
+    */
+
     @PostMapping("/addStudentForm")
     public String addStudentSubmit(@ModelAttribute Student student) {
         return "index";

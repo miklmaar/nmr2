@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Handling Form Submission</title>
+    <title>Add student</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -9,7 +9,7 @@
 <form action="#" th:action="@{/addStudentForm}" th:object="${student}" method="post">
     <p>Fornavn: <input type="text" th:field="*{firstName}" /></p>
     <p>Efternavn: <input type="text" th:field="*{lastName}" /></p>
-    <p>Opstartsdato: <input type="text" th:field="*{enrollmentDate}" /></p>
+    <p>Opstartsdato: <input type="date" th:field="*{enrollmentDate}" /></p>
     <p>CPR: <input type="text" th:field="*{cpr}" /></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
 </form>
