@@ -17,7 +17,13 @@ public class StudentController {
     }
 
     @GetMapping("/")
-    public String index(Model model){
+    public String homepage(Model model){
+        indexRead(model);
+        return "homepage";
+    }
+
+    @GetMapping("/studentList")
+    public String indedx(Model model){
         indexRead(model);
         return "index";
     }

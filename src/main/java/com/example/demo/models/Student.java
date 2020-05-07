@@ -18,8 +18,9 @@ public class Student{
         this.cpr = cpr;
     }
 
-    public Student() {}
+    public Student() {
 
+    }
 
     public String getFirstName() {
         return firstName;

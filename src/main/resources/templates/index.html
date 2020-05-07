@@ -18,6 +18,7 @@
                 <th>Last name</th>
                 <th>Enrollment</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
             <tr th:each="student : ${students}">
                 <td th:text="${student.firstName}"></td>
@@ -51,9 +52,8 @@
 
 
 
-
+            <a th:href="@{/addStudent}"><button>Add student </button></a>
         </table>
     </div>
-<a th:href="@{/addStudent}"><button>Add student </button></a>
 </body>
 </html>
