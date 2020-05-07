@@ -23,16 +23,21 @@ public class StudentController {
     }
 
     @GetMapping("/studentList")
-    public String indedx(Model model){
+    public String index(Model model){
         indexRead(model);
         return "index";
     }
 
     @GetMapping("/student")
-    @ResponseBody
-    public String getStudentByParameter(@RequestParam String cpr) {
+    //@ResponseBody
+    public String getStudentByParameter(@RequestParam String cpr, Model model) {
+        indexRead(model);
         Student stu = studentRepository.read(cpr);
-        return "The name is: " + stu.getFirstName() + " and the cpr is " + stu.getCpr();
+        model.addAttribute("studentFirstName",stu.firstName);
+        model.addAttribute("studentLastName",stu.lastName);
+        model.addAttribute("studentCPR", stu.cpr);
+        return "student/detail";
+        //return "The name is: " + stu.getFirstName() + " and the cpr is " + stu.getCpr();
     }
 
     @GetMapping("/deleteStudent")
@@ -64,7 +69,8 @@ public class StudentController {
     */
 
     @PostMapping("/addStudentForm")
-    public String addStudentSubmit(@ModelAttribute Student student) {
+    public String addStudentSubmit(@ModelAttribute Student student, Model model) {
+        indexRead(model);
         return "index";
     }
 

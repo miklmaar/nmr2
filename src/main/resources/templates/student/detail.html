@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Student details</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
 </head>
 <body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">KEA</a>
+    </div>
+    <div id="studentElement"><a href="/studentList">Students</a>
+    </div>
+    <div id="courseElement">Courses
+    </div>
 
+</div>
+<p th:text="${studentFirstName}"></p>
+<p th:text="${studentLastName}"></p>
+<p th:text="${studentCPR}"></p>
 </body>
 </html>

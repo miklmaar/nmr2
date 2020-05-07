@@ -3,8 +3,19 @@
 <head>
     <title>Add student</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
 </head>
 <body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">KEA</a>
+    </div>
+    <div id="studentElement"><a href="/studentList">Students</a>
+    </div>
+    <div id="courseElement">Courses
+    </div>
+
+</div>
 <h1>Form</h1>
 <form action="#" th:action="@{/addStudentForm}" th:object="${student}" method="post">
     <p>Fornavn: <input type="text" th:field="*{firstName}" /></p>

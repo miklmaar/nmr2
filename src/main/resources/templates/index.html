@@ -8,6 +8,15 @@
 </head>
 <body>
     <!-- TODO: MENU -->
+    <div class="homepage">
+        <div id="keaElement"><a href="/">KEA</a>
+        </div>
+        <div id="studentElement"><a href="/studentList">Students</a>
+        </div>
+        <div id="courseElement">Courses
+        </div>
+
+    </div>
     <!-- TODO: Table of students -->
     <div class="container">
         <h1>Student administration</h1>
@@ -27,29 +36,6 @@
                 <td><a th:href="@{/student(cpr=${student.cpr})}"><button>Details</button></a></td>
                 <td><a th:href="@{/deleteStudent(cpr=${student.cpr})}"><button>Delete</button></a>
             </tr>
-
-            <!--
-            <tr>
-                <td>Jill</td>
-                <td>Smith</td>
-                <td>19/5-2020</td>
-                <td><button>click me</button></td>
-            </tr>
-            <tr>
-                <td>Eve</td>
-                <td>Jackson</td>
-                <td>11/6-2013</td>
-                <td><button>click me</button></td>
-
-            </tr>
-            <tr>
-                <td>Karl</td>
-                <td>Marx</td>
-                <td>11/6-2013</td>
-                <td><button>click me</button></td>
-            </tr>
-            -->
-
 
 
             <a th:href="@{/addStudent}"><button>Add student </button></a>
