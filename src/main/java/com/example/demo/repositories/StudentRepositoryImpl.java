@@ -19,9 +19,19 @@ public class StudentRepositoryImpl implements IStudentRepository {
 
     @Override
     public boolean create(Student student) {
-
-        
-
+        try {
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO Students " +
+                    "VALUES ('"+
+                    student.firstName + "','" +
+                    student.lastName + "','" +
+                    ((int) student.enrollmentDate.getYear()+1900) + "-" + student.enrollmentDate.getMonth() + "-" + student.enrollmentDate.getDate() + "','" +
+                    student.cpr +
+                    "');");
+            ps.executeUpdate();
+            return true;
+        } catch(SQLException s){
+            s.printStackTrace();
+        }
         return false;
     }
 

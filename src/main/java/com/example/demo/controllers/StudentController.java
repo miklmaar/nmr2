@@ -71,6 +71,7 @@ public class StudentController {
     @PostMapping("/addStudentForm")
     public String addStudentSubmit(@ModelAttribute Student student, Model model) {
         indexRead(model);
+        studentRepository.create(student);
         return "index";
     }
 
