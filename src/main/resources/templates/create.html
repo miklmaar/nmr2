@@ -16,13 +16,15 @@
     </div>
 
 </div>
-<h1>Create student</h1>
-<form action="#" th:action="@{/addStudentForm}" th:object="${student}" method="post">
-    <p>First name: <input type="text" th:field="*{firstName}" /></p>
-    <p>Last name: <input type="text" th:field="*{lastName}" /></p>
-    <p>Enrollment date: <input type="date" th:field="*{enrollmentDate}" /></p>
-    <p>CPR: <input type="text" th:field="*{cpr}" /></p>
-    <p><input id="CreateButton" type="submit" value="Create" /></p>
-</form>
+<div id="formCreate">
+    <h1>Create student</h1>
+    <form action="#" th:action="@{/addStudentForm}" th:object="${student}" method="post">
+        <p>First name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Last name: <input type="text" th:field="*{lastName}" /></p>
+        <p>Enrollment date: <input type="date" th:field="*{enrollmentDate}" /></p>
+        <p>CPR: <input type="text" th:field="*{cpr}" /></p>
+        <p><input id="CreateButton" type="submit" value="Create" /></p>
+    </form>
+</div>
 </body>
 </html>
