@@ -1,0 +1,17 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <extensionMap>
+      <mapping pattern="Intertest" type="CLASS" />
+      <mapping pattern="drftgyhuji" type="CLASS" />
+      <mapping pattern="rftgyhujik" type="CLASS" />
+      <mapping pattern="*.js.flow" type="Flow" />
+      <mapping pattern="*.js.flow" type="Flow" />
+      <mapping pattern="Interface" type="JAVA" />
+      <mapping pattern="LilleStueListe" type="PLAIN_TEXT" />
+      <mapping pattern="Leder" type="PLAIN_TEXT" />
+      <mapping pattern="PeopleList" type="PLAIN_TEXT" />
+      <mapping pattern="VagtOensker" type="PLAIN_TEXT" />
+      <mapping pattern="Medarbejdere" type="PLAIN_TEXT" />
+    </extensionMap>
+  </component>
+</application>
