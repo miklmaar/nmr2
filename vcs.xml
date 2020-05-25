@@ -34,6 +34,10 @@
           <option name="url" value="https://github.com/Thor7578/NMR.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/Thor7578/NMR1.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Thor\IdeaProjects" />
