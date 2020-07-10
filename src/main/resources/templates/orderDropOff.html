@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>NMR Motorhomes</title>
+    <title>Student Administration</title>
     <!-- stylesheet -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
@@ -18,6 +18,15 @@
     </div>
     <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
     </div>
+</div>
+<div id="formcontainer">
+    <form th:action="@{/dropOffForm}" th:object="${order}" method="post">
+        <input type="hidden" th:field="*{orderID}" />
+        <input type="hidden" th:field="*{droppedOff}" th:value="true" />
+        <p>Distance to drop off</p>
+        <input type="text" th:field="*{dropOffDistance}" />
+        <input id="CreateButton" type="submit" value="Register">
+    </form>
 </div>
 </body>
 </html>

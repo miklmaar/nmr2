@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR motorhome</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div class="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div class="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div class="courseElement"><a href="/customers">Customers</a>
+    </div>
+    <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
+    </div>
+</div>
+<div id="formcontainer">
+    <form th:action="@{/motorhomeForm}" th:object="${motorhome}" method="post">
+        <input type="hidden" th:field="*{motorhomeID}" />
+        <p>License Plate</p>
+        <input type="text" th:field="*{licensePlate}" />
+        <p>Model Name</p>
+        <input type="text" th:field="*{modelName}" />
+        <p>Number of beds</p>
+        <input type="text" th:field="*{numberOfBeds}" />
+        <p>Price per night</p>
+        <input type="text" th:field="*{pricePerNight}" />
+        <p class="checkP">Cleaned?</p>
+        <input type="checkbox" id="cleaned" th:checked="*{cleaned}" th:field="*{cleaned}" />
+        <p class="checkP">Repaired?</p>
+        <input type="checkbox" id="repaired" th:checked="*{repaired}" th:field="*{repaired}" />
+        <p class="checkP">Active?</p>
+        <input type="checkbox" id="active" th:checked="*{active}" th:field="*{active}" />
+        <input id="CreateButton" type="submit" value="Update">
+    </form>
+</div>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>NMR Motorhomes</title>
+    <title>Student Administration</title>
     <!-- stylesheet -->
     <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
@@ -18,6 +18,19 @@
     </div>
     <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
     </div>
+</div>
+<div id="formcontainer">
+    <form th:action="@{/customerForm}" th:object="${customer}" method="post">
+        <p>CPR:</p>
+        <input type="text" th:field="*{CPR}" readonly />
+        <p>Full name:</p>
+        <input type="text" th:field="*{name}" />
+        <p>Driver's License ID:</p>
+        <input type="text" th:field="*{driversLicenseID}" />
+        <p>Credit Card Number:</p>
+        <input type="text" th:field="*{creditCardNo}" />
+        <input id="CreateButton" type="submit" value="Update">
+    </form>
 </div>
 </body>
 </html>

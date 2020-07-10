@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Administration</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div class="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div class="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div class="courseElement"><a href="/customers">Customers</a>
+    </div>
+    <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
+    </div>
+</div>
+<div class="container">
+    <div id="delError" th:if="${delError==true}">
+        <p th:text="${cpr} + ' IS ALREADY ATTACHED TO ONE OR MORE ORDERS AND CANNOT BE DELETED'"></p>
+    </div>
+
+    <h1>Customers</h1>
+
+    <table>
+        <tr>
+            <th>CPR</th>
+            <th>Full name</th>
+            <th>Driver's License ID</th>
+            <th>Credit Card Number</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="customer : ${customers}">
+            <td th:text="${customer.CPR}"></td>
+            <td th:text="${customer.name}"></td>
+            <td th:text="${customer.driversLicenseID}"></td>
+            <td th:text="${customer.creditCardNo}"></td>
+            <td><a th:href="@{/customer(cpr=${customer.CPR})}"><button>Edit</button></a></td>
+            <td><a th:href="@{/customerDelete(cpr=${customer.CPR})}"><button>Delete</button></a></td>
+        </tr>
+
+
+        <a th:href="@{/addCustomer}"><button>Add new customer</button></a>
+    </table>
+</div>
+</body>
+</html>

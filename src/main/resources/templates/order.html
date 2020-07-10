@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR motorhome</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div class="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div class="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div class="courseElement"><a href="/customers">Customers</a>
+    </div>
+    <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
+    </div>
+</div>
+<div id="formcontainer">
+
+    <h3 th:text="'Order ID: ' + ${order.orderID}"></h3>
+    <h3 th:text="'Customer CPR: ' + ${order.customer.CPR}"></h3>
+    <h3>Motorhomes in order:<a th:href="@{/order/addmotorhome(orderID=${order.orderID})}"><button>Add to order</button></a></h3>
+    <th:block th:switch="${addmotorhome}" th:case="true">
+        <form th:action="@{/order/addmh}" th:object="${motorhome}" method="post">
+            <input type="hidden" th:value="${order.orderID}" name="orderID" />
+            <select th:field="*{motorhomeID}">
+                <th:block th:each="mh : ${motorhomes}">
+                    <option th:if="${mh.active == true}" th:value="${mh.motorhomeID}" th:text="${mh.modelName}"></option>
+                </th:block>
+            </select>
+            <input type="submit" value="Add motorhome to order" id="CreateMHButton" />
+        </form>
+    </th:block>
+
+    <table>
+        <tr>
+            <th>MID</th>
+            <th>Model name</th>
+            <th>Beds</th>
+            <th>Price/Night</th>
+            <th>Delete from order</th>
+
+        </tr>
+
+        <th:block th:each="motorhome : ${mhInOrder}">
+
+            <tr>
+                <td th:text="${motorhome.motorhomeID}"></td>
+                <td th:text="${motorhome.modelName}"></td>
+                <td th:text="${motorhome.numberOfBeds}"></td>
+                <td th:text="${motorhome.pricePerNight}"></td>
+                <td><a th:href="@{/order/delete(mhid=${motorhome.motorhomeID}, orderid=${order.orderID})}"><button>Delete</button></a></td>
+                <td></td>
+            </tr>
+
+        </th:block>
+    </table>
+
+    <h3 th:text="'Number of days: ' + ${order.numberOfDays}"></h3>
+
+    <h3 th:text="'Dropped off?: ' + ${order.droppedOff}"></h3>
+
+    <div th:switch="${order.droppedOff}">
+        <h3 th:case="true" th:text="'Drop Off distance: ' + ${order.dropOffDistance}"></h3>
+    </div>
+
+    <h3 th:text="'Total price: ' + ${order.calcTotalPrice()}"></h3>
+
+</div>
+</body>
+</html>

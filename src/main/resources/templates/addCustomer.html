@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR motorhome</title>
+    <!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div class="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div class="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div class="courseElement"><a href="/customers">Customers</a>
+    </div>
+    <div class="courseElement"><a href="/cleanrepair">Clean/Repair</a>
+    </div>
+</div>
+<div id="formcontainer">
+    <form th:action="@{/addCustomerForm}" th:object="${customer}" method="post">
+        <p>CPR</p>
+        <input type="text" th:field="*{CPR}" />
+        <p>Full name</p>
+        <input type="text" th:field="*{name}" />
+        <p>Driver's License ID</p>
+        <input type="text" th:field="*{driversLicenseID}" />
+        <p>Credit Card No</p>
+        <input type="text" th:field="*{creditCardNo}" />
+        <input id="CreateButton" type="submit" value="Create">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR - Motorhomes</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div class="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div class="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div class="courseElement"><a href="/customers">Customers</a>
+    </div>
+    <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
+    </div>
+</div>
+<div class="container">
+
+    <th:block th:switch="${active}">
+        <h1 th:if="${active}==0">Active orders</h1>
+        <h1 th:if="${active}==1">Ended orders</h1>
+        <a th:href="@{/orders(active=1)}" th:if="${active}==0"><button>Display ended orders</button></a>
+        <a th:href="@{/orders(active=0)}" th:if="${active}==1"><button>Display active orders</button></a>
+    </th:block>
+
+    <table>
+        <tr>
+            <th>OID</th>
+            <th>Season</th>
+            <th>Customer name</th>
+            <th>Customer CPR</th>
+            <th>Days</th>
+            <th>Edit</th>
+            <th>Drop off</th>
+            <th>Delete</th>
+        </tr>
+        <th:block th:if="${active}==0">
+            <tr th:each="order : ${orders}"
+                th:if="${order.droppedOff}==false">
+                <td th:text="${order.getOrderID()}"></td>
+                <td th:text="SEASON"></td>
+                <td th:text="${order.getCustomer().getName()}"></td>
+                <td th:text="${order.getCustomer().getCPR()}"></td>
+                <td th:text="${order.getNumberOfDays()}"></td>
+                <td><a th:href="@{/order(id=${order.orderID})}"><button>Details</button></a></td>
+                <td><a th:href="@{/orderDropOff(oid=${order.orderID})}"><button>Drop off</button></a></td>
+                <td><a th:href="@{/orderDelete(oid=${order.orderID})}"><button>Delete</button></a></td>
+            </tr>
+        </th:block>
+        <th:block th:if="${active}==1">
+            <tr th:each="order : ${orders}"
+                th:if="${order.droppedOff}==true">
+                <td th:text="${order.getOrderID()}"></td>
+                <td th:text="SEASON"></td>
+                <td th:text="${order.getCustomer().getName()}"></td>
+                <td th:text="${order.getCustomer().getCPR()}"></td>
+                <td th:text="${order.getNumberOfDays()}"></td>
+                <td><a th:href="@{/order(id=${order.orderID})}"><button>Details</button></a></td>
+                <td th:text="${order.dropOffDistance} + 'km'"></td>
+                <td><a th:href="@{/orderDelete(oid=${order.orderID})}"><button>Delete</button></a></td>
+            </tr>
+        </th:block>
+
+        <a th:href="@{/linkCustomer}"><button>Add new order </button></a>
+    </table>
+</div>
+</body>
+</html>

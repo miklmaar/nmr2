@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR - Motorhomes</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div id="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div id="courseElement">Customers
+    </div>
+</div>
+<div class="container">
+    <form th:action="@{/addOrderForm}" th:object="${order}" method="post">
+        <input type="hidden" th:field="*{customer.CPR}" />
+        <p>Number of days</p>
+        <input type="number" th:field="*{numberOfDays}" />
+        <input id="CreateButton" type="submit" value="Add new order" />
+    </form>
+</div>
+</body>
+</html>

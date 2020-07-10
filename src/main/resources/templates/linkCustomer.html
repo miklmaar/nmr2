@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR - Motorhomes</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div class="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div class="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div class="courseElement"><a href="/customers">Customers</a>
+    </div>
+    <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
+    </div>
+</div>
+<div class="container">
+    <h1>List of customers</h1>
+
+    <p>Pick the corresponding CPR number</p>
+
+    <th:block th:each="customer : ${customers}">
+        <a th:href="@{/addOrder(cpr=${customer.CPR})}"><button th:text="${customer.getCPR()}"></button></a>
+    </th:block>
+
+    <h1>Add a new customer to list</h1>
+
+    <form th:action="@{/addedCustomer}" th:object="${customer}" method="post">
+        <p>CPR</p>
+        <input type="text" th:field="*{CPR}" />
+        <p>Full name</p>
+        <input type="text" th:field="*{name}" />
+        <p>Driver License ID</p>
+        <input type="text" th:field="*{driversLicenseID}" />
+        <p>Credit Card Number</p>
+        <input type="text" th:field="*{creditCardNo}" />
+        <input id="CreateButton" type="submit" value="Add new customer" />
+    </form>
+</div>
+</body>
+</html>

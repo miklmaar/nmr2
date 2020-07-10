@@ -21,11 +21,11 @@
     font-size: 18px;
 }
 
-#courseElement{
-    width:100px;
+.courseElement{
     height: 100%;
     display:inline-block;
     font-size:18px;
+    margin-left: 20px;
 }
 
 a{
@@ -45,9 +45,53 @@ a:visited{
     margin: 0 auto;
 }
 
+#CreateMHButton{
+    background-color: Green;
+    color: white;
+    width: 200px;
+    height: 35px;
+}
+
 #formCreate{
     margin-left: 100px;
     width: 40%;
+}
+
+.checkP{
+    margin: 0 auto;
+    text-align: center;
+}
+
+#formcontainer{
+    margin-left: 10%;
+    width: 75%
+}
+
+#delError{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    margin: 10px auto auto;
+    border: solid darkred;
+}
+
+#cleanlists{
+    width: 48%;
+    float:left
+}
+
+#repairlists{
+    width: 48%;
+    float:right;
+}
+
+#nexttoclean{
+    font-weight: bold;
+}
+
+#cleaned{
+    float:left;
+    margin-right: 10px;
 }
 
 

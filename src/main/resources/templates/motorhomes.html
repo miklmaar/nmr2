@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR - Motorhomes</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+<body>
+<div class="homepage">
+    <div id="keaElement"><a href="/">NMR</a>
+    </div>
+    <div class="courseElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div class="courseElement"><a th:href="@{/orders(active=0)}">Orders</a>
+    </div>
+    <div class="courseElement"><a href="/customers">Customers</a>
+    </div>
+    <div class="courseElement"><a href="cleanrepair">Clean/Repair</a>
+    </div>
+</div>
+<div class="container">
+    <h1>Active motorhomes in fleet</h1>
+
+    <table>
+        <tr>
+            <th>MID</th>
+            <th>License Plate</th>
+            <th>Model Name</th>
+            <th>Price/Night</th>
+            <th>Active?</th>
+            <th>Edit</th>
+            <th>Toggle activity</th>
+        </tr>
+        <tr th:each="motorhome : ${motorhomes}"
+            th:if="${motorhome.active} == true AND ${motorhome.cleaned} == true AND ${motorhome.repaired} == true">
+            <td th:text="${motorhome.motorhomeID}"></td>
+            <td th:text="${motorhome.licensePlate}"></td>
+            <td th:text="${motorhome.modelName}"></td>
+            <td th:text="${motorhome.pricePerNight}"></td>
+            <td th:text="${motorhome.active}"></td>
+            <td><a th:href="@{/motorhome(id=${motorhome.motorhomeID})}"><button>Details</button></a></td>
+            <td th:switch="${motorhome.active}">
+                <a th:case="true" th:href="@{/deleteMotorhome(id=${motorhome.motorhomeID})}"><button>Make inactive</button></a>
+                <a th:case="false" th:href="@{/activateMotorhome(id=${motorhome.motorhomeID})}"><button>Make active</button></a>
+            </td>
+        </tr>
+
+
+        <a th:href="@{/addMotorhome}"><button>Add motorhome </button></a>
+    </table>
+
+
+    <h1>Motorhomes in maintenance</h1>
+
+    <table>
+        <tr>
+            <th>MID</th>
+            <th>License Plate</th>
+            <th>Model Name</th>
+            <th>Price/Night</th>
+            <th>Active?</th>
+            <th>Edit</th>
+            <th>Toggle activity</th>
+        </tr>
+        <tr th:each="motorhome : ${motorhomes}"
+            th:if="${motorhome.active} == true AND ( ${motorhome.cleaned} == false OR ${motorhome.repaired} == false )">
+            <td th:text="${motorhome.motorhomeID}"></td>
+            <td th:text="${motorhome.licensePlate}"></td>
+            <td th:text="${motorhome.modelName}"></td>
+            <td th:text="${motorhome.pricePerNight}"></td>
+            <td th:text="${motorhome.active}"></td>
+            <td><a th:href="@{/motorhome(id=${motorhome.motorhomeID})}"><button>Details</button></a></td>
+            <td th:switch="${motorhome.active}">
+                <a th:case="true" th:href="@{/deleteMotorhome(id=${motorhome.motorhomeID})}"><button>Make inactive</button></a>
+                <a th:case="false" th:href="@{/activateMotorhome(id=${motorhome.motorhomeID})}"><button>Make active</button></a>
+            </td>
+        </tr>
+    </table>
+
+
+
+    <h1>Deactivated motorhomes</h1>
+    <table>
+        <tr>
+            <th>MID</th>
+            <th>License Plate</th>
+            <th>Model Name</th>
+            <th>Price/Night</th>
+            <th>Active?</th>
+            <th>Edit</th>
+            <th>Toggle activity</th>
+        </tr>
+        <tr th:each="motorhome : ${motorhomes}"
+            th:if="${motorhome.active} == false">
+            <td th:text="${motorhome.motorhomeID}"></td>
+            <td th:text="${motorhome.licensePlate}"></td>
+            <td th:text="${motorhome.modelName}"></td>
+            <td th:text="${motorhome.pricePerNight}"></td>
+            <td th:text="${motorhome.active}"></td>
+            <td><a th:href="@{/motorhome(id=${motorhome.motorhomeID})}"><button>Details</button></a></td>
+            <td th:switch="${motorhome.active}">
+                <a th:case="true" th:href="@{/deleteMotorhome(id=${motorhome.motorhomeID})}"><button>Make inactive</button></a>
+                <a th:case="false" th:href="@{/activateMotorhome(id=${motorhome.motorhomeID})}"><button>Make active</button></a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
